@@ -8,6 +8,7 @@ import java.util.List;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
@@ -19,7 +20,7 @@ import retrofit2.http.Query;
 public interface IdentificationProfileApi {
 
     @POST("identificationProfiles")
-    Call<CreateProfileResponse> createProfile(ProfileLocale locale);
+    Call<CreateProfileResponse> createProfile(@Body ProfileLocale locale);
 
     @DELETE("identificationProfiles/{identificationProfileId}")
     Call<Void> deleteProfile(@Path("identificationProfileId") String identificationProfileId);
