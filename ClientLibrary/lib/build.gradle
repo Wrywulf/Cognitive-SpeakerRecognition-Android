@@ -14,11 +14,18 @@ android {
 }
 
 dependencies {
-    compile 'com.google.code.gson:gson:2.4'
-    compile 'org.apache.httpcomponents:httpclient-android:4.3.5.1'
-    compile('org.apache.httpcomponents:httpmime:4.3') {
+    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'org.apache.httpcomponents:httpclient-android:4.3.5.1'
+    implementation('org.apache.httpcomponents:httpmime:4.3') {
         exclude module: "httpclient"
     }
+
+    implementation 'com.squareup.moshi:moshi:1.6.0'
+    implementation 'com.squareup.moshi:moshi-adapters:1.6.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-moshi:2.4.0'
 }
 
 apply plugin: 'maven'
