@@ -33,6 +33,7 @@
 package com.microsoft.cognitive.speakerrecognition.contract;
 
 import com.google.gson.annotations.SerializedName;
+import com.squareup.moshi.Json;
 
 /**
  * An enum encoding the status of a speaker enrollments for verification/identification
@@ -43,17 +44,20 @@ public enum EnrollmentStatus {
      * The profile is currently enrolling and is not ready for verification/identification
      */
     @SerializedName("Enrolling")
+    @Json(name = "Enrolling")
     ENROLLING,
 
     /**
      * The profile is currently training and is not ready for verification/identification
      */
     @SerializedName("Training")
+    @Json(name = "Training")
     TRAINING,
 
     /**
      * The profile is currently enrolled and is ready for verification/identification
      */
     @SerializedName("Enrolled")
+    @Json(name = "Enrolled")
     ENROLLED
 }

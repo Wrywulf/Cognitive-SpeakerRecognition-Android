@@ -40,15 +40,19 @@ import java.io.InputStreamReader;
 import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.client.methods.RequestBuilder;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
+
+import okhttp3.Request;
 
 /**
  * A package-private helper class
@@ -144,8 +148,8 @@ class SpeakerRestClientHelper {
      * Adds a stream to an HTTP entity
      *
      * @param someStream Input stream to be added to an HTTP entity
-     * @param fieldName A description of the entity content
-     * @param fileName Name of the file attached as an entity
+     * @param fieldName  A description of the entity content
+     * @param fileName   Name of the file attached as an entity
      * @return HTTP entity
      * @throws IOException Signals a failure while reading the input stream
      */

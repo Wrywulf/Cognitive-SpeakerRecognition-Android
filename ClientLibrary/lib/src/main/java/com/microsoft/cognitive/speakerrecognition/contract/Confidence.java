@@ -33,6 +33,7 @@
 package com.microsoft.cognitive.speakerrecognition.contract;
 
 import com.google.gson.annotations.SerializedName;
+import com.squareup.moshi.Json;
 
 /**
  * An enum encoding the confidence of the identification/verification result
@@ -43,17 +44,20 @@ public enum Confidence {
      * The confidence of the identification/verification is low
      */
     @SerializedName("Low")
+    @Json(name = "Low")
     LOW,
 
     /**
      * The confidence of the identification/verification is normal
      */
     @SerializedName("Normal")
+    @Json(name = "Normal")
     NORMAL,
 
     /**
      * The confidence of the identification/verification is high
      */
     @SerializedName("High")
+    @Json(name = "High")
     HIGH
 }
