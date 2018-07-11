@@ -1,5 +1,9 @@
 package com.microsoft.cognitive.speakerrecognition;
 
+import com.microsoft.cognitive.speakerrecognition.contract.IdentificationProfileApi;
+import com.microsoft.cognitive.speakerrecognition.contract.SpeakerRecognitionApi;
+import com.microsoft.cognitive.speakerrecognition.contract.VerificationPhraseApi;
+import com.microsoft.cognitive.speakerrecognition.contract.VerificationProfileApi;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.JsonReader;
 import com.squareup.moshi.JsonWriter;
@@ -47,6 +51,13 @@ public class RecognitionFactory {
     public SpeakerIdentificationClient createSpeakerIdentificationClient() {
         return new SpeakerIdentificationRetrofitClient(objectGraph.getIdentificationProfileApi(),
                 objectGraph.getSpeakerRecognitionApi(), objectGraph.getMoshi());
+    }
+
+    public SpeakerVerificationClient createSpeakerVerificationClient() {
+        return new SpeakerVerificationRetrofitClient(objectGraph.getVerificationProfileApi(),
+                objectGraph.getVerificationPhraseApi(),
+                objectGraph.getSpeakerRecognitionApi(),
+                objectGraph.getMoshi());
     }
 
     private static class ObjectGraph {
@@ -121,6 +132,14 @@ public class RecognitionFactory {
 
         public IdentificationProfileApi getIdentificationProfileApi() {
             return getRetrofit().create(IdentificationProfileApi.class);
+        }
+
+        public VerificationProfileApi getVerificationProfileApi() {
+            return getRetrofit().create(VerificationProfileApi.class);
+        }
+
+        public VerificationPhraseApi getVerificationPhraseApi() {
+            return getRetrofit().create(VerificationPhraseApi.class);
         }
 
         public SpeakerRecognitionApi getSpeakerRecognitionApi() {

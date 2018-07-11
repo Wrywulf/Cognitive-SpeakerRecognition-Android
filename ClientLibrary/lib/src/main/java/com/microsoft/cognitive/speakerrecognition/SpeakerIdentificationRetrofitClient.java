@@ -4,14 +4,16 @@ import com.microsoft.cognitive.speakerrecognition.contract.CreateProfileExceptio
 import com.microsoft.cognitive.speakerrecognition.contract.DeleteProfileException;
 import com.microsoft.cognitive.speakerrecognition.contract.EnrollmentException;
 import com.microsoft.cognitive.speakerrecognition.contract.GetProfileException;
+import com.microsoft.cognitive.speakerrecognition.contract.IdentificationProfileApi;
 import com.microsoft.cognitive.speakerrecognition.contract.ResetEnrollmentsException;
+import com.microsoft.cognitive.speakerrecognition.contract.SpeakerRecognitionApi;
 import com.microsoft.cognitive.speakerrecognition.contract.identification.CreateProfileResponse;
 import com.microsoft.cognitive.speakerrecognition.contract.identification.EnrollmentOperation;
 import com.microsoft.cognitive.speakerrecognition.contract.identification.IdentificationException;
 import com.microsoft.cognitive.speakerrecognition.contract.identification.IdentificationOperation;
 import com.microsoft.cognitive.speakerrecognition.contract.identification.OperationLocation;
 import com.microsoft.cognitive.speakerrecognition.contract.identification.Profile;
-import com.microsoft.cognitive.speakerrecognition.contract.identification.ProfileLocale;
+import com.microsoft.cognitive.speakerrecognition.contract.ProfileLocale;
 import com.squareup.moshi.Moshi;
 
 import java.io.File;

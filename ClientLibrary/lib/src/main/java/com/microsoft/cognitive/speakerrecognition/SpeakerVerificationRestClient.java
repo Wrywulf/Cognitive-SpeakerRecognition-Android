@@ -49,6 +49,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
@@ -316,6 +317,11 @@ public class SpeakerVerificationRestClient implements SpeakerVerificationClient 
         }
     }
 
+    @Override
+    public Enrollment enroll(File audio, UUID id) throws EnrollmentException, IOException {
+        return null;
+    }
+
     /**
      * Verifies a given speaker using the speaker ID and audio stream
      *
@@ -350,6 +356,11 @@ public class SpeakerVerificationRestClient implements SpeakerVerificationClient 
                 throw new VerificationException(String.valueOf(statusCode));
             }
         }
+    }
+
+    @Override
+    public Verification verify(File audio, UUID id) throws VerificationException, IOException {
+        return null;
     }
 
     /**

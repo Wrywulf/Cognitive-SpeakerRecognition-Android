@@ -1,4 +1,4 @@
-package com.microsoft.cognitive.speakerrecognition.contract.identification;
+package com.microsoft.cognitive.speakerrecognition.contract;
 
 public class ProfileLocale {
 

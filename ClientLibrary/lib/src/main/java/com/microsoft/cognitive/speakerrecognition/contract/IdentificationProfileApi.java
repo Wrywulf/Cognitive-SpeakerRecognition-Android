@@ -1,8 +1,8 @@
-package com.microsoft.cognitive.speakerrecognition;
+package com.microsoft.cognitive.speakerrecognition.contract;
 
 import com.microsoft.cognitive.speakerrecognition.contract.identification.CreateProfileResponse;
 import com.microsoft.cognitive.speakerrecognition.contract.identification.Profile;
-import com.microsoft.cognitive.speakerrecognition.contract.identification.ProfileLocale;
+import com.microsoft.cognitive.speakerrecognition.contract.ProfileLocale;
 
 import java.util.List;
 

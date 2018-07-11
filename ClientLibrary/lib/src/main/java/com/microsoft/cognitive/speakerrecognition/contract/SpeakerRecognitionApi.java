@@ -1,7 +1,8 @@
-package com.microsoft.cognitive.speakerrecognition;
+package com.microsoft.cognitive.speakerrecognition.contract;
 
 import com.microsoft.cognitive.speakerrecognition.contract.identification.EnrollmentOperation;
 import com.microsoft.cognitive.speakerrecognition.contract.identification.IdentificationOperation;
+import com.microsoft.cognitive.speakerrecognition.contract.verification.Verification;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -22,7 +23,7 @@ public interface SpeakerRecognitionApi {
 
     @Multipart
     @POST("verify")
-    Call<Void> verify(@Part("verificationData") RequestBody audio, @Query("verificationProfileId") String verificationProfileId);
+    Call<Verification> verify(@Part("verificationData") RequestBody audio, @Query("verificationProfileId") String verificationProfileId);
 
     @Multipart
     @POST("identify")
