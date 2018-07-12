@@ -33,6 +33,7 @@
 package com.microsoft.cognitive.speakerrecognition.contract.verification;
 
 import com.google.gson.annotations.SerializedName;
+import com.squareup.moshi.Json;
 
 /**
  * An enum encoding the verification result
@@ -42,11 +43,13 @@ public enum Result {
      * Result value indicating that the current speaker passed a verification attempt
      */
     @SerializedName("Accept")
+    @Json(name = "Accept")
     ACCEPT,
 
     /**
      * Result value indicating that the current speaker FAILED a verification attempt
      */
     @SerializedName("Reject")
+    @Json(name = "Reject")
     REJECT
 }
