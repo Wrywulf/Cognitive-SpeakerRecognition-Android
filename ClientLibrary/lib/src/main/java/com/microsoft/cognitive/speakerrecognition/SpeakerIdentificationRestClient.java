@@ -48,6 +48,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
@@ -307,6 +308,11 @@ public class SpeakerIdentificationRestClient implements SpeakerIdentificationCli
         }
     }
 
+    @Override
+    public OperationLocation enroll(File audioStream, UUID id, boolean forceShortAudio) throws EnrollmentException, IOException {
+        throw new RuntimeException();
+    }
+
     /**
      * Gets the enrollment operation status or result
      *
@@ -453,5 +459,10 @@ public class SpeakerIdentificationRestClient implements SpeakerIdentificationCli
                 throw new IdentificationException(String.valueOf(statusCode));
             }
         }
+    }
+
+    @Override
+    public OperationLocation identify(File audio, List<UUID> ids, boolean shortAudio) throws IdentificationException, IOException {
+        return null;
     }
 }

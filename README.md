@@ -1,3 +1,17 @@
+# Custom version of MS Speaker Recognition API Android SDK
+## What's changed:
+* Switched from Apache HTTP Client to OkHttp (and Retrofit)
+* Switched from GSon to Moshi
+* Using Android Gradle Plugin 3.2.0
+* remove unused <library> tag (which causes compile errors for clients during manifest merge)
+* Deprecated API methods using ```InputStream``` in favor of new methods using java.io.File
+    - Allows OkHttp to re-read in case of retries and removes the requirement on the API caller to close the InputStream
+
+    
+### Added new APIs for interacting with the SDK:
+```RecognitionFactory``` is used to build implementations of the ```SpeakerIdentificationClient``` and ```SpeakerVerificationClient``` based on Retrofit and OkHttp.
+
+
 # Microsoft Speaker Recognition API: Android Client Library
 This repo contains the Android client library for the Microsoft Speaker Recognition API, an offering within [Microsoft Cognitive Services](https://www.microsoft.com/cognitive-services), formerly known as Project Oxford.
 * [Learn about the Speaker Recognition API](https://www.microsoft.com/cognitive-services/en-us/speaker-recognition-api)

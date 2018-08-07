@@ -44,9 +44,9 @@ import com.microsoft.cognitive.speakerrecognition.contract.identification.Identi
 import com.microsoft.cognitive.speakerrecognition.contract.identification.OperationLocation;
 import com.microsoft.cognitive.speakerrecognition.contract.identification.Profile;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.UUID;
 
@@ -59,24 +59,41 @@ public interface SpeakerIdentificationClient {
      * Identifies a given speaker using the speaker ID and audio stream
      *
      * @param audioStream The audio stream to identify
-     * @param ids The list of possible speaker profile IDs to identify from
+     * @param ids         The list of possible speaker profile IDs to identify from
      * @return An object encapsulating the Url that can be used to query the identification operation status
      * @throws IdentificationException Thrown in case of an internal server error, invalid IDs or a wrong audio format
-     * @throws IOException Signals an I/O issue while reading the audio stream, a connection abortion, or an invalid response content
+     * @throws IOException             Signals an I/O issue while reading the audio stream, a connection abortion, or an invalid response content
+     * @deprecated use {@link #identify(File, List, boolean)} instead
      */
+    @Deprecated
     OperationLocation identify(InputStream audioStream, List<UUID> ids) throws IdentificationException, IOException;
+
 
     /**
      * Identifies a given speaker using the speaker ID and audio stream
      *
-     * @param audioStream The audio stream to identify
-     * @param ids The list of possible speaker profile IDs to identify from
+     * @param audioStream     The audio stream to identify
+     * @param ids             The list of possible speaker profile IDs to identify from
      * @param forceShortAudio Instruct the service to waive the recommended minimum audio limit needed for identification
      * @return An object encapsulating the Url that can be used to query the identification operation status
      * @throws IdentificationException Thrown in case of an internal server error, invalid IDs or a wrong audio format
-     * @throws IOException Signals an I/O issue while reading the audio stream, a connection abortion, or an invalid response content
+     * @throws IOException             Signals an I/O issue while reading the audio stream, a connection abortion, or an invalid response content
+     * @deprecated use {@link #identify(File, List, boolean)} instead
      */
+    @Deprecated
     OperationLocation identify(InputStream audioStream, List<UUID> ids, boolean forceShortAudio) throws IdentificationException, IOException;
+
+    /**
+     * Identifies a given speaker using the speaker ID and audio stream
+     *
+     * @param audio      The audio WAV file to identify
+     * @param ids        The list of possible speaker profile IDs to identify from
+     * @param shortAudio Instruct the service to waive the recommended minimum audio limit needed for identification
+     * @return An object encapsulating the Url that can be used to query the identification operation status
+     * @throws IdentificationException Thrown in case of an internal server error, invalid IDs or a wrong audio format
+     * @throws IOException             Signals an I/O issue while reading the audio stream, a connection abortion, or an invalid response content
+     */
+    OperationLocation identify(File audio, List<UUID> ids, boolean shortAudio) throws IdentificationException, IOException;
 
     /**
      * Creates a new speaker profile
@@ -84,7 +101,7 @@ public interface SpeakerIdentificationClient {
      * @param locale The speaker profile locale
      * @return The profile object encapsulating the response object of the create request
      * @throws CreateProfileException Thrown on cases of internal server error or an invalid locale
-     * @throws IOException Signals an invalid locale encoding, a connection abortion, or an invalid response content
+     * @throws IOException            Signals an invalid locale encoding, a connection abortion, or an invalid response content
      */
     CreateProfileResponse createProfile(String locale) throws CreateProfileException, IOException;
 
@@ -93,7 +110,7 @@ public interface SpeakerIdentificationClient {
      *
      * @param id The ID of the speaker profile to be deleted
      * @throws DeleteProfileException Thrown on case of an internal server error or an invalid ID
-     * @throws IOException Signals a connection abortion, or an invalid response content
+     * @throws IOException            Signals a connection abortion, or an invalid response content
      */
     void deleteProfile(UUID id) throws DeleteProfileException, IOException;
 
@@ -103,7 +120,7 @@ public interface SpeakerIdentificationClient {
      * @param id The ID of the speaker profile to get
      * @return The requested profile
      * @throws GetProfileException Thrown in cases of invalid ID or an internal server error
-     * @throws IOException Signals a connection abortion, or an invalid response content
+     * @throws IOException         Signals a connection abortion, or an invalid response content
      */
     Profile getProfile(UUID id) throws GetProfileException, IOException;
 
@@ -112,7 +129,7 @@ public interface SpeakerIdentificationClient {
      *
      * @return An array containing a list of all profiles
      * @throws GetProfileException Thrown in case of an internal server error
-     * @throws IOException Signals a connection abortion, or an invalid response content
+     * @throws IOException         Signals a connection abortion, or an invalid response content
      */
     List<Profile> getProfiles() throws GetProfileException, IOException;
 
@@ -120,24 +137,40 @@ public interface SpeakerIdentificationClient {
      * Enrolls a speaker profile from an audio stream
      *
      * @param audioStream The audio stream to use for enrollment
-     * @param id The speaker profile ID to enroll
+     * @param id          The speaker profile ID to enroll
      * @return An object encapsulating the Url that can be used to query the enrollment operation status
      * @throws EnrollmentException Thrown in case of an invalid audio format, internal server error or an invalid ID
-     * @throws IOException Signals an I/O issue while reading the audio stream, a connection abortion, or an invalid response content
+     * @throws IOException         Signals an I/O issue while reading the audio stream, a connection abortion, or an invalid response content
+     * @deprecated use {@link #enroll(File, UUID, boolean)} instead
      */
+    @Deprecated
     OperationLocation enroll(InputStream audioStream, UUID id) throws EnrollmentException, IOException;
 
     /**
      * Enrolls a speaker profile from an audio stream
      *
-     * @param audioStream The audio stream to use for enrollment
-     * @param id The speaker profile ID to enroll
+     * @param audioStream     The audio stream to use for enrollment
+     * @param id              The speaker profile ID to enroll
      * @param forceShortAudio Instruct the service to waive the recommended minimum audio limit needed for enrollment
      * @return An object encapsulating the Url that can be used to query the enrollment operation status
      * @throws EnrollmentException Thrown in case of an invalid audio format, internal server error or an invalid ID
-     * @throws IOException Signals an I/O issue while reading the audio stream, a connection abortion, or an invalid response content
+     * @throws IOException         Signals an I/O issue while reading the audio stream, a connection abortion, or an invalid response content
+     * @deprecated use {@link #enroll(File, UUID, boolean)} instead
      */
+    @Deprecated
     OperationLocation enroll(InputStream audioStream, UUID id, boolean forceShortAudio) throws EnrollmentException, IOException;
+
+    /**
+     * Enrolls a speaker profile from an audio stream
+     *
+     * @param audio           A wav-file containing the enrollment audio
+     * @param id              The speaker profile ID to enroll
+     * @param forceShortAudio Instruct the service to waive the recommended minimum audio limit needed for enrollment
+     * @return An object encapsulating the Url that can be used to query the enrollment operation status
+     * @throws EnrollmentException Thrown in case of an invalid audio format, internal server error or an invalid ID
+     * @throws IOException         Signals an I/O issue while reading the audio stream, a connection abortion, or an invalid response content
+     */
+    OperationLocation enroll(File audio, UUID id, boolean forceShortAudio) throws EnrollmentException, IOException;
 
     /**
      * Gets the enrollment operation status or result
@@ -145,7 +178,7 @@ public interface SpeakerIdentificationClient {
      * @param location The Url returned upon calling the enrollment operation
      * @return The enrollment operation object encapsulating the result
      * @throws EnrollmentException Thrown in case of an internal server error or an invalid URL
-     * @throws IOException Signals a connection abortion, or an invalid response content
+     * @throws IOException         Signals a connection abortion, or an invalid response content
      */
     EnrollmentOperation checkEnrollmentStatus(OperationLocation location) throws EnrollmentException, IOException;
 
@@ -155,7 +188,7 @@ public interface SpeakerIdentificationClient {
      * @param location The Url returned upon calling the identification operation
      * @return The identification operation object encapsulating the result
      * @throws IdentificationException Thrown in case of an internal server error or a wrong URL
-     * @throws IOException Signals a connection abortion, or an invalid response content
+     * @throws IOException             Signals a connection abortion, or an invalid response content
      */
     IdentificationOperation checkIdentificationStatus(OperationLocation location) throws IdentificationException, IOException;
 
@@ -164,7 +197,7 @@ public interface SpeakerIdentificationClient {
      *
      * @param id The speaker ID
      * @throws ResetEnrollmentsException Thrown in case of internal server error or an invalid ID
-     * @throws IOException Signals a connection abortion, or an invalid response content
+     * @throws IOException               Signals a connection abortion, or an invalid response content
      */
     void resetEnrollments(UUID id) throws ResetEnrollmentsException, IOException;
 }

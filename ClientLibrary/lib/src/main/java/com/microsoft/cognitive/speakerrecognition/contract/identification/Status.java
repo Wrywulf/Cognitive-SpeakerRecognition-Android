@@ -33,6 +33,7 @@
 package com.microsoft.cognitive.speakerrecognition.contract.identification;
 
 import com.google.gson.annotations.SerializedName;
+import com.squareup.moshi.Json;
 
 /**
  * An enum to encapsulate the enrollment/identification operation status
@@ -43,23 +44,27 @@ public enum Status {
      * The operation has not started yet
      */
     @SerializedName("notstarted")
+    @Json(name = "notstarted")
     NOTSTARTED,
 
     /**
      * The operation is still RUNNING
      */
     @SerializedName("running")
+    @Json(name = "running")
     RUNNING,
 
     /**
      * The operation has finished and FAILED
      */
     @SerializedName("failed")
+    @Json(name = "failed")
     FAILED,
 
     /**
      *  The operation has finished and SUCCEEDED
      */
     @SerializedName("succeeded")
+    @Json(name = "succeeded")
     SUCCEEDED
 }
