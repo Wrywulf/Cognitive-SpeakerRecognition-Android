@@ -13,6 +13,7 @@ import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter;
 import java.io.IOException;
 import java.util.Date;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -106,6 +107,8 @@ public class RecognitionFactory {
                             }
                         })
                         .addInterceptor(getLogger())
+                        .readTimeout(60, TimeUnit.SECONDS)
+                        .writeTimeout(60, TimeUnit.SECONDS)
                         .build();
             }
             return okHttpClient;
